@@ -15,11 +15,12 @@
 }
 
 .content {
+  position: relative;
   display: flex;
   align-items: center;
 
   & p {
-    transform: translateY(2px);
+    transform: translateY(1.5px);
   }
 }
 

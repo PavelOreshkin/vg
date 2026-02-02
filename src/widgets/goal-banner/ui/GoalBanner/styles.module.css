@@ -27,9 +27,10 @@
 }
 
 .description {
-  margin-top: 16px;
+  margin-top: 10px;
   color: var(--gray-text);
   text-align: center;
+  line-height: 28px;
 
   @media (max-width: 700px) {
     margin-top: 12px;
@@ -37,7 +38,7 @@
 }
 
 .button {
-  margin-top: 16px;
+  margin-top: 14px;
   @media (max-width: 700px) {
     margin-top: 12px;
   }

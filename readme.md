@@ -1,157 +1,199 @@
-# Генерация сопроводительных писем с помощью AI
+# AI-Powered Cover Letter Generation
+Mockups: https://www.figma.com/design/9WUKe9EbiuhelC4dnSFIfw/Test-Assignment--Copy-?node-id=4-11215&t=ntCnGqTpnhsXxV0C-0
 
-## Запуск
+---
+## Assignment
 
-1. `yarn` - установка пакетов
-2. `npm run dev` - запуск режима разработки
+Develop a small application for generating cover letter texts, consisting of two screens:
 
-Если нужна сборка она делается так:
+Dashboard with a list of created letters:
+![Dashboard with a list of created letters](readme-images/task1.png)
+Form for generating a new letter:
+![Form for generating a new letter](readme-images/task2.png)
 
-1. `npm run build` - сборка проекта
-1. `npm run preview` - запуск сборки
 
-## О проекте
+### Details
 
-### Технологии
+- The application's goal is to motivate the user to create at least 5 letters. A banner showing the current count is displayed until there are fewer letters.
+- The application doesn't have any server database, but should be able to restore cover letters that were created in the same browser. If you close the tab and open it again — the list of created letters should remain the same.
+- The mockups intentionally don't use any design system or ready-made React UI kit. Finding patterns, systematizing components and styles is one of the key parts of the test assignment.
+- The mockups don't include a mobile version — you need to create it yourself.
+- For letter generation, you can use the following letter template (or any other at your discretion):
 
-1. `React` - Основной фреймворк
-2. `Vite` - Сборщик
-3. `Css Modules` - Стили
-4. `Zustand` - Стейт менеджер
-5. `Open AI` в качестве бизнесовой интеграции
+```
+Dear [Company] Team,
 
-### Архитектура
+I am writing to express my interest in the [JobTitle] position.
 
-Проект хоть и небольшой но сделал в архитектуре [FSD](https://feature-sliced.github.io/).
+My experience in the realm combined with my skills in [SkillsList] make me a strong candidate for this role.
+
+[AdditionalDetails]
+
+I am confident that my skills and enthusiasm would translate into valuable contributions to your esteemed organization.
+
+Thank you for considering my application. I eagerly await the opportunity to discuss my qualifications further.
+
+```
+
+### Additional Tasks (optional)
+
+- Simulate long (2-3 sec) text generation and show a loading state as shown in the design.
+- Implement AI for writing letters. Connect to the OpenAI API (or another of your choice), create a prompt and link it with form data, so that instead of using a static template, the model writes dynamic texts.
+
+### Stack
+
+Must use React and TypeScript. Preferably **not** use Tailwind.
+
+Everything else — at your discretion.
+
+---
+
+
+## Getting Started
+
+1. `yarn` - install packages
+2. `npm run dev` - start development mode
+
+If you need a build, it's done like this:
+
+1. `npm run build` - build the project
+1. `npm run preview` - run the build
+
+## About the Project
+
+### Technologies
+
+1. `React` - Main framework
+2. `Vite` - Bundler
+3. `Css Modules` - Styles
+4. `Zustand` - State manager
+5. `Open AI` as business integration
+
+### Architecture
+
+Although the project is small, I built it using [FSD](https://feature-sliced.design/) architecture.
 
 #### `app`
 
-Для хранения функционала относящегося ко всему приложению
+For storing functionality related to the entire application
 
 #### `pages`
 
-Для хранения страниц. Страницы желательно делать тонкими, чтобы основная логика была в widgets features и entities.
+For storing pages. Pages should preferably be thin, so that the main logic is in widgets, features, and entities.
 
 #### `widgets`
 
-Для переиспользуемого полноценного блока со своей логикой.
+For reusable full-fledged blocks with their own logic.
 
 #### `features`
 
-Для хранения пользовательского взаимодействия.
+For storing user interactions.
 
 #### `entities`
 
-Для хранения бизнес сущностей. Часто эти сущности согласуются с сущностями бекенда. У нас это `application` и `open-ai`.
+For storing business entities. Often these entities correspond to backend entities. In our case, these are `application` and `open-ai`.
 
 #### `shared`
 
-Общий переиспользуемый код.
+Common reusable code.
 
-## Основные задания
+# Result:
+## Main Tasks
 
-#### 1. Приложение должно уметь восстанавливать сопроводительные письма, которые были созданы в этом же браузере
+#### 1. The application should be able to restore cover letters that were created in the same browser
 
-✅ `Zustand` связан с `localstorage` через `persist middleware`.
+✅ `Zustand` is connected to `localstorage` via `persist middleware`.
 
-#### 2. В макетах специально не используется никакой дизайн-системы или готового React UI kit-а.
+#### 2. The mockups intentionally don't use any design system or ready-made React UI kit.
 
-✅ В `src\shared\ui` хранится разработанный UI-kit который можно удобно заменить на какие либо библиотеки если потребуется.
-✅ Также есть css переменные для удобного управления темой `src\app\styles\theme.css`
+✅ A developed UI-kit is stored in `src\shared\ui` which can be conveniently replaced with any libraries if needed.
+✅ There are also CSS variables for convenient theme management `src\app\styles\theme.css`
 
-#### 3. В макетах отсутствует мобильная версия — вам нужно создать ее самостоятельно.
+#### 3. The mockups don't include a mobile version — you need to create it yourself.
 
-✅ Мобильная версия реализована, в качестве самого маленького экрана был взят `iPhoneSE` в `Chrome devtools`
+✅ Mobile version is implemented, `iPhoneSE` in `Chrome devtools` was taken as the smallest screen
 
-#### 4. Для генерации писем можете использовать следующий шаблон письма (или любой другой по своему усмотрению):
+#### 4. For letter generation, you can use the following letter template (or any other at your discretion):
 
-Был взят более продвинутый вариант из дополнительных заданий
+A more advanced option from the additional tasks was chosen
 
-## Дополнительные задания
+## Additional Tasks
 
-#### 1. Симулировать долгую (2-3 сек) генерацию текста и показать состояние загрузки, как показано в этом прототипе.
+#### 1. Simulate long (2-3 sec) text generation and show a loading state as shown in this prototype.
 
-✅ Сделана симуляция и анимация загрузки
+✅ Simulation and loading animation implemented
 
-#### 2. Внедрить AI для написания писем
+#### 2. Implement AI for writing letters
 
-✅ Сделана интеграция с `OpenAI`
+✅ Integration with `OpenAI` completed
 
-#### 3. Опубликовать сайт для удобства
+#### 3. Publish the site for convenience
 
-✅ Пожалуйста, принимайте =)
+✅ Done 
 https://vg-five-xi.vercel.app
 
-## На что мы будем обращать внимание при проверке
+## What We Will Pay Attention to During Review
 
-#### Понятность и масштабируемость кода
+#### Code clarity and scalability
 
-FSD подход в оформлении кода, в плане масштабируемости отличный вариант
+FSD approach in code formatting, excellent option in terms of scalability
 
-#### Понимание дизайна и внимание к деталям, качество верстки и адаптивности
+#### Design understanding and attention to detail, layout and responsiveness quality
 
-Кроме того что изображено на макетах я добавлял дополнительную логику например:
+Besides what is shown in the mockups, I added additional logic, for example:
 
-- добавил необходимые состояния кнопок: loading, disable, hover, active
-- оживил иконку загрузки на кнопке
-- проверял переполняемость контентом, инпутов, фиксил баги если были
-- создал тему для удобства и понимания
+- Added necessary button states: loading, disable, hover, active
+- Animated the loading icon on the button
+- Checked content overflow in inputs, fixed bugs if any
+- Created a theme for convenience and understanding
 
-#### Понимание React и следование best practices
+#### Understanding React and following best practices
 
-В консоле нет ни ошибок ни варнингов.
-Кроме базовых eslint, pritter, typescript и прочего к 19ому реакту прикрутил `react compiler` для улучшения производительности
-Вот так выглядит когда что compiler работает =)
+There are no errors or warnings in the console.
+Besides basic eslint, prettier, typescript, and others, I added `react compiler` to React 19 for improved performance
+This is what it looks like when the compiler is working =)
 ![alt text](readme-images/compiler.png)
 
-#### Структура проекта
+#### Project structure
 
-Старался сделать все понятно и аккуратно. Конечно для такого небольшого вариант можно было бы взять подход проще и оформить код ещё понятнее, но я больше думал про потенциальную расширяемость, которая может случиться с любым проектом.
+I tried to make everything clear and neat. Of course, for such a small project, a simpler approach could have been taken to make the code even clearer, but I was thinking more about potential scalability, which can happen with any project.
 
-## Экстра штучки
+## Extra Features
 
-### Редактирование
+### Editing
 
-Кроме создания рекомендательного письма реализовал ещё и функцию его редактирования, кажется это необходимым минимумом для приложения. Считаю что это сильно улучшает пользовательский опыт.
+Besides creating a recommendation letter, I also implemented an editing function, which seems to be the necessary minimum for an application. I believe this significantly improves the user experience.
 
-### Обработка ошибок
+### Error Handling
 
-1. `ErrorLogger` - сервис логирования, если нужно прикрутить Sentry это можно и нужно сделать только в одном месте
-2. `setupGlobalErrorHandlers` - для подстраховки и перехвата глобальных ошибок
-3. `ErrorBoundary` - для перехвата ошибок внутри компонентов, чтобы приложение продолжало частично работать при сбое, а не падало полностью с белым экраном
+1. `ErrorLogger` - logging service, if you need to add Sentry, it can and should be done in only one place
+2. `setupGlobalErrorHandlers` - for backup and catching global errors
+3. `ErrorBoundary` - for catching errors inside components, so that the application continues to partially work in case of failure, instead of crashing completely with a white screen
 
-### Доступность
+### Accessibility
 
-По всему приложению можно перемещатсья через таб без мыши
+You can navigate through the entire application via tab without a mouse
 
-### Метрики
+### Metrics
 
-Уже опубликованной на бесплатной версии Vercel
+Already published on the free version of Vercel
 ![alt text](readme-images/performance.png)
 
-### 404 страница
+### 404 Page
 
-Не сложно а пользователю приятно
+Not difficult, but pleasant for the user
 
-### Генерация сопроводительного
+### Cover Letter Generation
 
-На небольших экранах организовал форму сверху а сгенерированное письмо снизу и сделал скролл к нему при нажатии
+On small screens, I organized the form on top and the generated letter below, and made a scroll to it when clicked
 
-### Шрифты
+### Fonts
 
-С помощью `rel="preload"` убрал моргание шрифтов
+Using `rel="preload"` I removed font flickering
 
-## Что бы я обговорил с дизайнером (все минорное)
+## What I Would Discuss with the Designer (all minor)
 
-- в макетах желательно использовать размеры кратные 2 или 4, например в логотипе отступ между иконкой и "Alt+Shift 12.67px, я беру 12 (вообще больше я таких моментов не видел, поэтому вопрос можно опустить)
-- ошибка: кнопка `Generate Now` при загрузке меняет размер с 60 на 56
-- в кнопке с иконкой домика цвет иконки rgba(52, 64, 84, 1) в кнопке "copy to clipboard" rgba(71, 84, 103, 1) уточнить не ошибка ли это, потому что газом разницу почти не видно
-- на главной странице при большом количестве карточек можно было бы закреплять Header а прокрутку делать только ниже, в блоке с карточками
-
-<br />
-
-> ### На этом всё!
->
-> Благодарю за уделённое время и внимательное рассмотрение моего тестового задания. Это действительно важно для меня.
-> Надеюсь эта работа зацепит вас и мы продолжим общение
-> В любом случе я всегда расположен получать обратную связь и буду рад любому совету =)
+- In mockups, it's preferable to use sizes divisible by 2 or 4, for example in the logo the spacing between the icon and "Alt+Shift" is 12.67px, I take 12 (I didn't see any more such moments, so this question can be skipped)
+- Bug: `Generate Now` button changes size from 60 to 56 during loading
+- In the button with the house icon, the icon color is rgba(52, 64, 84, 1), in the "copy to clipboard" button it's rgba(71, 84, 103, 1) — clarify if this is an error, because the difference is almost invisible to the eye
+- On the main page with a large number of cards, you could fix the Header and make scrolling only below, in the cards block

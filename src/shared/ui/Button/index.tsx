@@ -3,6 +3,7 @@ import type { PropsWithChildren } from "react";
 import styles from "./styles.module.css";
 import clsx from "clsx";
 import Loader from "@/shared/ui/Loader";
+import Typography from "../Typography";
 
 type ButtonProps = {
   loading?: boolean;
@@ -59,7 +60,7 @@ const Button = ({
       {!loading && (
         <div className={styles.content}>
           {startIcon}
-          <p>{children}</p>
+          <Typography as="p" className={styles.text}>{children}</Typography>
           {endIcon}
         </div>
       )}
